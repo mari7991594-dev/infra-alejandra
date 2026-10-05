@@ -13,3 +13,4 @@ Despliegue con Docker Compose de Nginx, Apache httpd y MariaDB con red propia y 
     cp .env.example .env
     docker compose up -d
     docker compose ps
+Para detener el entorno: docker compose down
