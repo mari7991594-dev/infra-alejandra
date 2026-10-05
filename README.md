@@ -1,4 +1,4 @@
-# infra-equipo
+# infra-alejandra
 
 Repositorio de infraestructura del laboratorio de Administración de Centros de Cómputo.
 
