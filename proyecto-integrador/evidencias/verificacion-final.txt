@@ -42,8 +42,8 @@
 [OK]    Es un repositorio Git
 [OK]    Tiene commits
 [OK]    Remoto de GitHub configurado
-[FALLA] Sin cambios pendientes de commit
+[OK]    Sin cambios pendientes de commit
 
 ==============================
-Correctas: 35   Fallidas: 1
-Revisa las líneas [FALLA].
+Correctas: 36   Fallidas: 0
+Actividad 14 verificada.
