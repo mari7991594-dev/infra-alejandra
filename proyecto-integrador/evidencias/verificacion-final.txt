@@ -1,0 +1,49 @@
+=== 1. Estructura de carpetas del repositorio (/home/alejandra/infra-equipo/proyecto-integrador) ===
+[OK]    El repositorio existe
+[OK]    Carpeta docs
+[OK]    Carpeta compose
+[OK]    Carpeta scripts
+[OK]    Carpeta backups
+
+=== 2. Evidencias de diseño ===
+[OK]    Archivo de requerimientos: /home/alejandra/infra-equipo/proyecto-integrador/docs/requerimientos.md
+[OK]    Requerimientos funcionales: 4 (mínimo 3)
+[OK]    Requerimientos no funcionales: 5 (mínimo 3)
+[OK]    Los RNF incluyen algo medible (cifra o porcentaje)
+[OK]    Diagrama de arquitectura: /home/alejandra/infra-equipo/proyecto-integrador/docs/diagrama-arquitectura.svg
+[OK]    Plan de implementación: /home/alejandra/infra-equipo/proyecto-integrador/docs/plan-implementacion.md
+[OK]    El plan menciona 'etapa'
+[OK]    El plan menciona 'responsable'
+[OK]    El plan menciona 'fecha'
+[OK]    Matriz de riesgos: /home/alejandra/infra-equipo/proyecto-integrador/docs/matriz-riesgos.md
+[OK]    La matriz menciona 'riesgo'
+[OK]    La matriz menciona 'impacto'
+[OK]    La matriz menciona 'mitigaci'
+[OK]    La matriz tiene contenido suficiente (7 líneas)
+
+=== 3. Archivo compose y errores comunes ===
+[OK]    Archivo compose: /home/alejandra/proyecto-6/compose.yaml
+[OK]    YAML válido (docker compose config)
+[OK]    Sin tabulaciones en el YAML
+[OK]    Sin puertos duplicados
+
+=== 4. Plataforma en funcionamiento ===
+[OK]    Contenedores en ejecución: 15
+[OK]    Todos con política de reinicio
+[OK]    Ningún contenedor reiniciándose
+[OK]    Web responde en 192.168.1.200:8091
+[OK]    Uptime Kuma responde en 192.168.1.200:3001
+[OK]    DNS resuelve docker.alejandra.pe
+[OK]    DNS resuelve app.alejandra.pe
+[OK]    MariaDB (p6-db) activa
+[OK]    UFW activo
+
+=== 5. Repositorio Git ===
+[OK]    Es un repositorio Git
+[OK]    Tiene commits
+[OK]    Remoto de GitHub configurado
+[FALLA] Sin cambios pendientes de commit
+
+==============================
+Correctas: 35   Fallidas: 1
+Revisa las líneas [FALLA].

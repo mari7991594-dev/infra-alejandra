@@ -1,0 +1,16 @@
+NAMES                     IMAGE                        STATUS                    PORTS
+n8n                       docker.n8n.io/n8nio/n8n      Up 44 minutes             0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp
+p6-dns                    strm/dnsmasq                 Up 44 minutes             192.168.1.200:53->53/tcp, 192.168.1.200:53->53/udp
+monitoreo-uptime-kuma-1   louislam/uptime-kuma:2       Up 44 minutes (healthy)   0.0.0.0:3002->3001/tcp, [::]:3002->3001/tcp
+portainer                 portainer/portainer-ce:lts   Up 44 minutes             8000/tcp, 9000/tcp, 0.0.0.0:9443->9443/tcp, [::]:9443->9443/tcp
+p6-portainer              portainer/portainer-ce:lts   Up 44 minutes             8000/tcp, 9443/tcp, 0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp
+p6-adminer                adminer                      Up 44 minutes             0.0.0.0:8092->8080/tcp, [::]:8092->8080/tcp
+p6-app                    nginx:alpine                 Up 44 minutes             0.0.0.0:8091->80/tcp, [::]:8091->80/tcp
+p6-firewall               alpine:3.20                  Up 44 minutes             
+p6-kuma                   louislam/uptime-kuma:1       Up 44 minutes (healthy)   0.0.0.0:3001->3001/tcp, [::]:3001->3001/tcp
+p6-db                     mariadb:11                   Up 44 minutes             3306/tcp
+s7-nginx                  nginx:latest                 Up 44 minutes             0.0.0.0:8090->80/tcp, [::]:8090->80/tcp
+s7-app                    httpd:2.4                    Up 44 minutes             80/tcp
+s7-db                     mariadb:11                   Up 44 minutes             3306/tcp
+web3                      nginx                        Up 44 minutes             0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
+web1                      nginx                        Up 44 minutes             0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
