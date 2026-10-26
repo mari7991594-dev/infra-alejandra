@@ -99,16 +99,17 @@ const tarjetas = servicios.map(s => {
 });
 
 async function comprobar(s) {
-  const t0 = performance.now();
   const ctrl = new AbortController();
   const to = setTimeout(() => ctrl.abort(), 8000);
   try {
-    await fetch("http://" + IP + ":" + s.p, { mode:"no-cors", cache:"no-store", signal:ctrl.signal });
+    const r = await fetch("estado.json?t=" + Date.now(), { cache: "no-store", signal: ctrl.signal });
+    const est = await r.json();
     clearTimeout(to);
-    return { ok:true, ms:Math.round(performance.now() - t0) };
-  } catch (e) {
+    const e = est[s.p];
+    return (e && e.codigo !== "000") ? { ok: true, ms: e.ms } : { ok: false, ms: null };
+  } catch (err) {
     clearTimeout(to);
-    return { ok:false, ms:null };
+    return { ok: false, ms: null };
   }
 }
 

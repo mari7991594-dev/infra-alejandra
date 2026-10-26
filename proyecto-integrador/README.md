@@ -31,7 +31,7 @@ El script ~/proyecto-integrador/scripts/pruebas.sh ejecuta quince pruebas de hum
 
     ~/proyecto-integrador/scripts/pruebas.sh | tee ~/proyecto-integrador/evidencias/salida_pruebas.txt
 
-Se aceptan como respuesta válida los códigos HTTP 200, 301, 302, 307 y 308, y el script reintenta hasta seis veces con cinco segundos de pausa cuando un servicio todavía no acepta conexiones. Termina con un resumen de pruebas aprobadas y fallidas y con código de salida 1 si alguna falla. El resultado esperado es quince aprobadas y cero fallidas. Los defectos encontrados y sus correcciones están en docs/registro_defectos.txt, y docs/panel.html es un panel visual de estado que se sirve con python3 -m http.server 8099 desde la carpeta docs, como complemento y no como medición de referencia.
+Se aceptan como respuesta válida los códigos HTTP 200, 301, 302, 307 y 308, y el script reintenta hasta seis veces con cinco segundos de pausa cuando un servicio todavía no acepta conexiones. Termina con un resumen de pruebas aprobadas y fallidas y con código de salida 1 si alguna falla. El resultado esperado es quince aprobadas y cero fallidas. Los defectos encontrados y sus correcciones están en docs/registro_defectos.txt, y docs/panel.html es un panel visual de estado que se sirve con python3 -m http.server 8099 desde la carpeta docs. El panel lee el archivo estado.json, que genera cada minuto el script scripts/generar_estado.sh programado en cron con la línea * * * * * ~/proyecto-integrador/scripts/generar_estado.sh, y que mide cada servicio con curl desde la máquina virtual.
 
 RESPALDO Y RECUPERACIÓN
 
