@@ -8,7 +8,7 @@ prueba_http() {
   local nombre="$1" url="$2" codigo
   codigo=$(curl -sk -o /dev/null -w "%{http_code}" --max-time 5 "$url")
   case "$codigo" in
-    200|301|302) echo "[OK]    $nombre -> HTTP $codigo ($url)"; OK=$((OK+1));;
+    200|301|302|307|308) echo "[OK]    $nombre -> HTTP $codigo ($url)"; OK=$((OK+1));;
     *)           echo "[FALLO] $nombre -> HTTP $codigo ($url)"; FALLO=$((FALLO+1));;
   esac
 }
