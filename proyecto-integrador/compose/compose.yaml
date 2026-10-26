@@ -1,78 +1,49 @@
+name: proyecto-integrador
+
 services:
-  db:
-    image: mariadb:11
-    container_name: p6-db
+  web1:
+    image: nginx
+    container_name: web1
     restart: unless-stopped
+    ports:
+      - "8080:80"
+
+  web3:
+    image: nginx
+    container_name: web3
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    volumes:
+      - datos-lab:/usr/share/nginx/html
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
     environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: proyecto
-      MARIADB_USER: appuser
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      N8N_EDITOR_BASE_URL: "http://192.168.1.200:5678"
+      N8N_SECURE_COOKIE: "false"
+      WEBHOOK_URL: "http://192.168.1.200:5678/"
     volumes:
-      - datos_mariadb:/var/lib/mysql
-    networks:
-      - red_proyecto
+      - n8n_data:/home/node/.n8n
 
-  app:
-    image: nginx:alpine
-    container_name: p6-app
-    restart: unless-stopped
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    restart: always
     ports:
-      - "8091:80"
+      - "9443:9443"
     volumes:
-      - ./html:/usr/share/nginx/html:ro
-    depends_on:
-      - db
-    networks:
-      - red_proyecto
-
-  dns:
-    image: strm/dnsmasq
-    container_name: p6-dns
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - "192.168.1.200:53:53/udp"
-      - "192.168.1.200:53:53/tcp"
-    volumes:
-      - ./dns/dnsmasq.conf:/etc/dnsmasq.conf:ro
-    networks:
-      - red_proyecto
-
-  firewall:
-    image: alpine:3.20
-    container_name: p6-firewall
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    command: >
-      sh -c "apk add --no-cache iptables &&
-      iptables -A INPUT -i lo -j ACCEPT &&
-      iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT &&
-      iptables -A INPUT -p icmp -j ACCEPT &&
-      iptables -A INPUT -p tcp --dport 80 -j ACCEPT &&
-      iptables -A INPUT -p tcp --dport 443 -j ACCEPT &&
-      iptables -P INPUT DROP &&
-      iptables -L -n -v &&
-      tail -f /dev/null"
-    networks:
-      - red_proyecto
-
-  proxmox-monitor:
-    image: louislam/uptime-kuma:1
-    container_name: p6-kuma
-    restart: unless-stopped
-    ports:
-      - "3001:3001"
-    volumes:
-      - datos_kuma:/app/data
-    networks:
-      - red_proyecto
-
-networks:
-  red_proyecto:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
 
 volumes:
-  datos_mariadb:
-  datos_kuma:
+  datos-lab:
+    external: true
+  n8n_data:
+    external: true
+  portainer_data:
+    external: true

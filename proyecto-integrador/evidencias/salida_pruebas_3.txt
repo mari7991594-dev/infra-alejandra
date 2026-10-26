@@ -1,0 +1,17 @@
+=== Pruebas de humo - 26/10/2026 20:07:02 ===
+[OK]    web1 (nginx) -> HTTP 200 (http://192.168.1.200:8080)
+[OK]    web3 (nginx) -> HTTP 200 (http://192.168.1.200:8081)
+[OK]    s7-nginx -> HTTP 200 (http://192.168.1.200:8090)
+[OK]    p6-app -> HTTP 200 (http://192.168.1.200:8091)
+[OK]    p6-adminer -> HTTP 200 (http://192.168.1.200:8092)
+[OK]    p6-kuma -> HTTP 302 (http://192.168.1.200:3001)
+[OK]    uptime-kuma (3002) -> HTTP 302 (http://192.168.1.200:3002)
+[FALLO] n8n -> HTTP 000 (http://192.168.1.200:5678)
+[OK]    p6-portainer -> HTTP 307 (http://192.168.1.200:9000)
+[OK]    portainer (https) -> HTTP 200 (https://192.168.1.200:9443)
+[OK]    DNS app.alejandra.pe
+[OK]    DNS docker.alejandra.pe
+[OK]    MariaDB p6-db
+[OK]    MariaDB s7-db
+[OK]    Firewall p6-firewall (iptables)
+=== Resumen: 14 aprobadas, 1 fallidas ===
