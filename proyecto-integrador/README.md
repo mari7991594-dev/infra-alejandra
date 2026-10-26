@@ -51,3 +51,9 @@ Antes de confiar en un respaldo se verifica su integridad con sha256sum y se pru
 SEGURIDAD
 
 El firewall UFW de la máquina virtual está activo con política de denegar el tráfico entrante y solo permite los puertos 22 y 80 por TCP. Cualquier puerto adicional, como el 8099 del panel, se abre solo mientras se usa y se cierra después con sudo ufw delete allow seguido de la regla.
+
+OTROS CONTENEDORES
+
+Además de los quince contenedores en ejecución, existen tres contenedores detenidos, prometheus, grafana y node-exporter, que corresponden al trabajo de monitoreo de la Semana 11. Se crearon fuera de Docker Compose y no forman parte de la plataforma desplegada en esta actividad, cuyo monitoreo de disponibilidad se realiza con las dos instancias de Uptime Kuma. Si se necesitan de nuevo, se inician con el comando siguiente:
+
+    docker start prometheus grafana node-exporter
