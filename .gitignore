@@ -1,3 +1,6 @@
 .env
 .env
 proyecto-integrador/docs/estado.json
+proyecto-integrador/backups/*
+!proyecto-integrador/backups/.gitkeep
+*.tar.gz
